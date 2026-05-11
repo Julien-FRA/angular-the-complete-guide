@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { Task } from '../../../utils/types/task.type';
+import { Component, input, output } from '@angular/core';
+import { type Task } from '../../../utils/types/task.type';
 
 @Component({
   selector: 'app-task',
@@ -10,4 +10,10 @@ import { Task } from '../../../utils/types/task.type';
 })
 export class TaskComponent {
   task = input.required<Task>();
+
+  complete = output<string>();
+
+  onCompleteTask() {
+    this.complete.emit(this.task().id);
+  }
 }
