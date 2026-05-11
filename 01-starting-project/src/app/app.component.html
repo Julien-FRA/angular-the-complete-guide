@@ -5,10 +5,7 @@
       <li>
         <app-user
           (select)="onSelectUser($event)"
-          [id]="user.id"
-          [avatar]="user.avatar"
-          [name]="user.name"
-          [age]="user.age"
+          [user]="user"
         />
       </li>
     }

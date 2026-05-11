@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
 import { UserComponent } from './user/user.component';
-import { DUMMY_USERS } from '../utils/dummy-users';
+import { DUMMY_USERS } from '../utils/data/dummy-users';
 import { TasksComponent } from "./tasks/tasks.component";
 import { find } from 'rxjs';
 
