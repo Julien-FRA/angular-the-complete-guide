@@ -19,4 +19,8 @@ type User = {
 })
 export class AppComponent {
   users: User[] = DUMMY_USERS;
+
+  onSelectUser(id: string) {
+    console.log('Selected user with id:', id);
+  }
 }
