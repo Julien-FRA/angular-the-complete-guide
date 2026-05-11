@@ -4,8 +4,8 @@ import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from '../utils/data/dummy-users';
 import { DUMMY_TASKS } from '../utils/data/dummy-taskList';
 import { TasksComponent } from './tasks/tasks.component';
-import { Task } from '../utils/types/task.type';
-import { User } from '../utils/types/user.type';
+import { type Task } from '../utils/types/task.type';
+import { type User } from '../utils/types/user.type';
 
 @Component({
   selector: 'app-root',
@@ -31,5 +31,9 @@ export class AppComponent {
 
   onSelectUser(id: string) {
     this.userIdSelected = id;
+  }
+
+  onUpdateUserTasks(taskId: string) {
+    this.taskList = this.taskList.filter((task) => task.id !== taskId);
   }
 }

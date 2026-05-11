@@ -10,6 +10,7 @@ import { User } from '../../utils/types/user.type';
 })
 export class UserComponent {
   user = input.required<User>();
+  selected = input<boolean>(false);
 
   select = output<string>();
 
