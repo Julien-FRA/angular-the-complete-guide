@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from '../utils/data/dummy-users';
-import { TasksComponent } from "./tasks/tasks.component";
-import { find } from 'rxjs';
-
-type User = {
-  id: string;
-  name: string;
-  avatar: string;
-  age: number;
-};
+import { DUMMY_TASKS } from '../utils/data/dummy-taskList';
+import { TasksComponent } from './tasks/tasks.component';
+import { Task } from '../utils/types/task.type';
+import { User } from '../utils/types/user.type';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +16,17 @@ type User = {
 })
 export class AppComponent {
   users: User[] = DUMMY_USERS;
-  protected userIdSelected: string = '';
+  taskList: Task[] = DUMMY_TASKS;
+  protected userIdSelected?: string;
 
-  get userNameSelected() {
-    return this.users.find(user => user.id === this.userIdSelected)?.name;
+  get userSelected(): User | undefined {
+    return this.users.find((user) => user.id === this.userIdSelected);
+  }
+
+  get userTasks(): Task[] | null {
+    return this.userIdSelected
+      ? this.taskList.filter((task) => task.userId === this.userIdSelected)
+      : null;
   }
 
   onSelectUser(id: string) {
