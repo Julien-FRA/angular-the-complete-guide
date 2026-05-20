@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-add-task',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './add-task.component.css'
 })
 export class AddTaskComponent {
+  isModalOpen = output<boolean>();
 
+  onCloseModal() {
+    this.isModalOpen.emit(false);
+  }
 }

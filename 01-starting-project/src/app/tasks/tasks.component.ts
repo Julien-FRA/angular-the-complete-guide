@@ -26,4 +26,8 @@ export class TasksComponent {
   onAddTask() {
     this.isAddingTask = !this.isAddingTask;
   }
+
+  onCloseModal(isModalOpen: boolean) {
+    this.isAddingTask = isModalOpen;
+  }
 }

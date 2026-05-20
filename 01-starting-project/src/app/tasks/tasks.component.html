@@ -5,7 +5,7 @@
       <button (click)="onAddTask()">Add Task</button>
     </menu>
     @if (isAddingTask) {
-      <app-add-task () />
+      <app-add-task (isModalOpen)="onCloseModal($event)" />
     }
   </header>
 
