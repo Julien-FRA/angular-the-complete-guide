@@ -1,8 +1,9 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { type User } from '../../utils/types/user.type';
 import { type Task } from '../../utils/types/task.type';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -12,18 +13,17 @@ import { AddTaskComponent } from './add-task/add-task.component';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  user = input.required<User>();
-  taskList = input.required<Task[] | null>();
+  private taskService = inject(TasksService);
 
-  completeTaskId = output<string>();
+  user = input.required<User>();
 
   isAddingTask = false;
 
-  onCompleteTask(taskId: string) {
-    this.completeTaskId.emit(taskId);
+  get userTasks(): Task[] | null {
+    return this.taskService.getUserTasks(this.user().id) || null;
   }
 
-  onAddTask() {
+  onAddingTask() {
     this.isAddingTask = !this.isAddingTask;
   }
 

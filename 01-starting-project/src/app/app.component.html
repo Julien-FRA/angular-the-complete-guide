@@ -15,8 +15,6 @@
   @if (userSelected) {
     <app-tasks
       [user]="userSelected"
-      [taskList]="userTasks"
-      (completeTaskId)="onUpdateUserTasks($event)"
     />
   } @else {
     <p id="fallback">Select user to see their tasks !</p>

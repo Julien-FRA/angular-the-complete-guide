@@ -1,17 +1,18 @@
+@if (isAddingTask) {
+  <app-add-task [userId]="user().id" (isModalOpen)="onCloseModal($event)" />
+}
+
 <section id="tasks">
   <header>
     <p>{{ user().name }}'s Tasks</p>
     <menu>
-      <button (click)="onAddTask()">Add Task</button>
+      <button (click)="onAddingTask()">Add Task</button>
     </menu>
-    @if (isAddingTask) {
-      <app-add-task (isModalOpen)="onCloseModal($event)" />
-    }
   </header>
 
   <ul>
-    @for (task of taskList(); track task.id) {
-      <li><app-task [task]="task" (complete)="onCompleteTask($event)"   /></li>
+    @for (task of userTasks; track task.id) {
+      <li><app-task [task]="task" /></li>
     }
   </ul>
 </section>
