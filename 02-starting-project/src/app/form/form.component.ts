@@ -1,25 +1,30 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Investment } from '../../utils/types/investment';
-import {form, FormField} from '@angular/forms/signals';
+import { FormsModule } from '@angular/forms';
+import { InvestmentService } from '../../utils/services/investment.service';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormField],
+  imports: [FormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
 })
 export class FormComponent {
-  investmentModel = signal<Investment>({
-    initialInvestment: 0,
-    annualInvestment: 0,
-    expectedReturn: 0,
-    duration: 0
-  });
-
-  investmentForm = form()
+  investmentService = inject(InvestmentService);
+  simulName = signal<string>('');
+  initialInvestment = signal<number>(0);
+  annualInvestment = signal<number>(0);
+  expectedReturn = signal<number>(0);
+  duration = signal<number>(0);
 
   onSubmit() {
-    console.log(this.newInvestment());
+    this.investmentService.addInvestment({
+      simulName: this.simulName(),
+      initialInvestment: this.initialInvestment(),
+      annualInvestment: this.annualInvestment(),
+      expectedReturn: this.expectedReturn(),
+      duration: this.duration(),
+    });
   }
 }

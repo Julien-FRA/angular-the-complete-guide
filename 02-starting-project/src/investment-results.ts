@@ -2,8 +2,10 @@
 // e.g., integrate it into a service or component
 // You may need to tweak it, depending on where and how you use it
 
-function calculateInvestmentResults() {
-  const annualData = [];
+import { Investment, InvestmentData } from "./utils/types/investment";
+
+export function calculateInvestmentResults({initialInvestment, annualInvestment, expectedReturn, duration}: Investment): InvestmentData[] {
+  const annualData: InvestmentData[] = [];
   let investmentValue = initialInvestment;
 
   for (let i = 0; i < duration; i++) {
@@ -21,6 +23,8 @@ function calculateInvestmentResults() {
       totalAmountInvested: initialInvestment + annualInvestment * year,
     });
   }
+
+  console.log('Result data: ', annualData);
 
   return annualData;
 }

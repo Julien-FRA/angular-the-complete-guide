@@ -1,0 +1,7 @@
+@if (investments) { @for (investment of investments; track $index) {
+<div>
+  <button>#{{ investment.simulName }}: {{ investment.initialInvestment }}</button>
+</div>
+} } @else {
+<p>Veuillez créer votre première simulation.</p>
+}
