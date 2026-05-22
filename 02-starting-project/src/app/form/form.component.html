@@ -1,13 +1,23 @@
-<form>
+<form (submit)="onSubmit()">
   <div class="input-group">
-    <label for="text1">Text 1</label>
-      <input type="text" id="text1" />
-      <label for="text1">Text 1</label>
-      <input type="text" id="text1" />
-      <label for="text1">Text 1</label>
-      <input type="text" id="text1" />
-      <label for="text1">Text 1</label>
-      <input type="text" id="text1" />
+    <p>
+      <label for="initialInvestment">Initial investment</label>
+      <input type="text" id="initialInvestment" [(ngModel)]="newInvestment" />
+    </p>
+    <p>
+      <label for="annualInvestment">Annual investment</label>
+      <input type="text" id="annualInvestment" />
+    </p>
+  </div>
+  <div class="input-group">
+    <p>
+      <label for="expectedReturn">Expected return</label>
+      <input type="text" id="expectedReturn" />
+    </p>
+    <p>
+      <label for="duration">Duration</label>
+      <input type="text" id="duration" />
+    </p>
   </div>
   <button type="submit">Calculator</button>
 </form>
