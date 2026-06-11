@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { InvestmentService } from '../../utils/services/investment.service';
 
 @Component({
@@ -11,7 +11,13 @@ import { InvestmentService } from '../../utils/services/investment.service';
 export class Investments {
   private investmentService = inject(InvestmentService);
 
+  selectedInvestmentId = output<number>();
+
   get investments() {
     return this.investmentService.getInvestments();
+  }
+
+  onSelectInvestment(id: number) {
+    this.selectedInvestmentId.emit(id);
   }
 }

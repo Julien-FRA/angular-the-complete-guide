@@ -17,14 +17,15 @@ export class InvestmentService {
   }
 
   addInvestment({
+    id,
     simulName,
     initialInvestment,
     annualInvestment,
     expectedReturn,
     duration,
   }: Investment) {
-    console.log(initialInvestment);
     this.investmentHistory.push({
+      id,
       simulName,
       initialInvestment,
       annualInvestment,
@@ -35,8 +36,12 @@ export class InvestmentService {
     this.saveToLocalStorage();
   }
 
-  getInvestments() {
+  getInvestments(): Investment[] {
     return this.investmentHistory;
+  }
+
+  getInvestmentById(id: number): Investment | undefined {
+    return this.investmentHistory.find((investment) => investment.id == id);
   }
 
   calculateInvestment(investment: Investment): InvestmentData[] {

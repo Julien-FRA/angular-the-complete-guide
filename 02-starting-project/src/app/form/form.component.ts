@@ -1,5 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
-import { Investment } from '../../utils/types/investment';
+import { Component, inject, output, signal } from '@angular/core';
+import { Investment, InvestmentData } from '../../utils/types/investment';
 import { FormsModule } from '@angular/forms';
 import { InvestmentService } from '../../utils/services/investment.service';
 
@@ -18,13 +18,23 @@ export class FormComponent {
   expectedReturn = signal<number>(0);
   duration = signal<number>(0);
 
+  newInvestment = output<InvestmentData[]>();
+
   onSubmit() {
-    this.investmentService.addInvestment({
+    let investment: Investment = {
+      id: Date.now() + Math.floor(Math.random()),
       simulName: this.simulName(),
       initialInvestment: this.initialInvestment(),
       annualInvestment: this.annualInvestment(),
       expectedReturn: this.expectedReturn(),
       duration: this.duration(),
-    });
+    };
+
+    this.investmentService.addInvestment(investment);
+
+    let investmentResult =
+      this.investmentService.calculateInvestment(investment);
+
+    this.newInvestment.emit(investmentResult);
   }
 }

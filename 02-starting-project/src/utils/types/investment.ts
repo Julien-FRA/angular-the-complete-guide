@@ -1,4 +1,5 @@
 export type Investment = {
+  id: number;
   simulName: string;
   initialInvestment: number;
   annualInvestment: number;

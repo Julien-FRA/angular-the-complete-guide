@@ -1,6 +1,6 @@
 <body class="center">
-    <app-header />
-    <app-form />
-    <app-investments />
-    <app-table />
+  <app-header />
+  <app-form (newInvestment)="onNewInvestment($event)" />
+  <app-investments (selectedInvestmentId)="onSelectedInvestmentId($event)" />
+  <app-table [newInvestment]="newInvestment()" />
 </body>
