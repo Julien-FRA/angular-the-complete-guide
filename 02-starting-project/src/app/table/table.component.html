@@ -12,10 +12,10 @@
     @for (investment of newInvestment(); track $index) {
       <tr>
         <th>{{ investment.year }}</th>
-        <th>{{ investment.totalAmountInvested }}</th>
-        <th>{{ investment.valueEndOfYear }}</th>
-        <th>{{ investment.totalInterest }}</th>
-        <th>{{ investment.annualInvestment }}</th>
+        <th>{{ investment.valueEndOfYear | currency }}</th>
+        <th>{{ investment.interest | currency }}</th>
+        <th>{{ investment.totalInterest | currency }}</th>
+        <th>{{ investment.totalAmountInvested | currency }}</th>
       </tr>
     }
   </tbody>

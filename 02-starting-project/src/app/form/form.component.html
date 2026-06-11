@@ -14,7 +14,7 @@
     <p>
       <label for="initialInvestment">Initial investment</label>
       <input
-        type="text"
+        type="number"
         id="initialInvestment"
         name="initialInvestment"
         [(ngModel)]="initialInvestment"
@@ -23,7 +23,7 @@
     <p>
       <label for="annualInvestment">Annual investment</label>
       <input
-        type="text"
+        type="number"
         id="annualInvestment"
         name="annualInvestment"
         [(ngModel)]="annualInvestment"
@@ -34,7 +34,7 @@
     <p>
       <label for="expectedReturn">Expected return</label>
       <input
-        type="text"
+        type="number"
         id="expectedReturn"
         name="expectedReturn"
         [(ngModel)]="expectedReturn"
@@ -42,7 +42,12 @@
     </p>
     <p>
       <label for="duration">Duration</label>
-      <input type="text" id="duration" name="duration" [(ngModel)]="duration" />
+      <input
+        type="number"
+        id="duration"
+        name="duration"
+        [(ngModel)]="duration"
+      />
     </p>
   </div>
   <button type="submit">Calculator</button>
