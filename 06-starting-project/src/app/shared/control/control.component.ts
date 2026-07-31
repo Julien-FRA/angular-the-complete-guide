@@ -9,6 +9,4 @@ import { Component, input } from '@angular/core';
 })
 export class ControlComponent {
   label = input.required<string>();
-  name = input.required<string>();
-  id = input.required<string>();
 }
