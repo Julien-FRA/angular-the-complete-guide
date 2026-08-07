@@ -1,1 +1,5 @@
-<p>ticket works!</p>
+<li>
+  <h3>{{ ticket().title }}</h3>
+  <p>{{ ticket().text }}</p>
+  <span [class]="ticket().status">{{ ticket().status }}</span>
+</li>

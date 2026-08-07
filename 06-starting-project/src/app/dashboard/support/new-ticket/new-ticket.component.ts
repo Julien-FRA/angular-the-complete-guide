@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
+import { Ticket } from '../../../utils/ticket.model';
 
 @Component({
   selector: 'app-new-ticket',
@@ -11,8 +12,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-ticket.component.css',
 })
 export class NewTicketComponent {
+  ticket = output<Ticket>();
+
   onSubmit(title: string, text: string, form: HTMLFormElement): void {
-    console.log(title, text);
+    const newTicket: Ticket = {
+      id: Math.random().toString(),
+      title,
+      text,
+      status: 'open',
+    };
+    this.ticket.emit(newTicket);
     form.reset();
   }
 }
