@@ -16,4 +16,13 @@ export class SupportComponent {
   onAddTicket(ticket: Ticket): void {
     this.tickets.push(ticket);
   }
+
+  onUpdateTicket(id: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === id) {
+        return { ...ticket, status: 'closed' };
+      }
+      return ticket;
+    });
+  }
 }
