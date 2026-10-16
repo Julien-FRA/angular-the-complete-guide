@@ -7,9 +7,7 @@ import { Task } from './task.model';
 export class TaskService {
   private tasks = signal<Task[]>([]);
 
-  allTasks() {
-    return this.tasks();
-  }
+  allTasks = this.tasks.asReadonly();
 
   addTask(title: string, description?: string) {
     const newTask: Task = {
@@ -19,5 +17,11 @@ export class TaskService {
       status: 'OPEN',
     };
     this.tasks.update((oldTasks) => [...oldTasks, newTask]);
+  }
+
+  updateTaskStatus(taskId: string, status: 'OPEN' | 'IN_PROGRESS' | 'DONE') {
+    this.tasks.update((oldTasks) =>
+      oldTasks.map((task) => (task.id === taskId ? { ...task, status } : task)),
+    );
   }
 }
